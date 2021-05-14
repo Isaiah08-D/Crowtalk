@@ -1,6 +1,7 @@
 from manage import INIT
 from user_tools import logged_in
 from flask import session, request, render_template, redirect, url_for
+from forms import LoginForm
 app = INIT.app
 non_login_list = ['/', '/view-questions', '/login']
 pages = ['/', '/view-quesions', '/login', '/logout']
@@ -17,8 +18,14 @@ def index():
 
 
 
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-	return render_template('login.html')
+	name = None
+	form = LoginForm()
+	if form.validate_on_submit():
+		email = form.email.data
+		password = form.password.data
+		
+	return render_template('login.html', form=form)
 
 app.run('0.0.0.0')
