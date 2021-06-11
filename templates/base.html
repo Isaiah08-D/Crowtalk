@@ -24,12 +24,26 @@
 
 
 </style>
+{% if login == False %}
 <div class="topnav">
-  <a href="#home">Home</a>
-  <a href="#news">News</a>
-  <a href="#contact">Contact</a>
-  <a href="#about">About</a>
+  <a href="/">Home</a>
+  <a href="/login">Login</a>
+  <a href="/create-account">Create an account</a>
+  <a href="/posts">Posts</a>
 </div>
+
+{% else %}
+
+<div class="topnav">
+  <a href="/">Home</a>
+  <a href="/posts">Posts</a>
+  <a href="/post">Post</a>
+  <a href="/logout">Logout</a>
+</div>
+
+{% endif %}
+
+<br>
 
  {% if message != None %}
 <div class="container">

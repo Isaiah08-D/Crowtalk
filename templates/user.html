@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>{{ username }}</h1>
+
+<h2>Posts</h2>
+{% for title, post in userinfo['posts'].items() %}
+
+<a href="/post={{ post['title'] }}"><h1>{{ title }}</h1></a>
+
+<p>{{ post['content'] }}</p>
+{% endfor %}
+
+{% endblock %}

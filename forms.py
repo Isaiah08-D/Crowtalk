@@ -7,3 +7,8 @@ class LoginForm(FlaskForm):
 	username = StringField('Username: ', validators=[Required()])
 	password = PasswordField('Password: ', validators=[Required()])
 	submit = SubmitField('Login')
+
+class PostForm(FlaskForm):
+	title = StringField('Title: ', validators=[Required()])
+	body = StringField('Post: ', validators=[Required()])
+	submit = SubmitField('Post')
