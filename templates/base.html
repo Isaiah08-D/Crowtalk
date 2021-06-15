@@ -32,8 +32,7 @@
   <a href="/posts">Posts</a>
 </div>
 
-{% else %}
-
+{% elif login[0] == True %}
 <div class="topnav">
   <a href="/">Home</a>
   <a href="/posts">Posts</a>
@@ -41,7 +40,17 @@
   <a href="/logout">Logout</a>
 </div>
 
+{% elif login[2] == 'mod' %}
+<div class="topnav">
+  <a href="/">Home</a>
+  <a href="/posts">Posts</a>
+  <a href="/post">Post</a>
+  <a href="/logout">Logout</a>
+  <a href="/mod-activity">Mod activity</a>
+</div>
 {% endif %}
+
+
 
 <br>
 

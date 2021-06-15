@@ -12,3 +12,7 @@ class PostForm(FlaskForm):
 	title = StringField('Title: ', validators=[Required()])
 	body = StringField('Post: ', validators=[Required()])
 	submit = SubmitField('Post')
+
+class CommentForm(FlaskForm):
+	comment = StringField('Text: ', validators=[Required()])
+	submit = SubmitField('Comment')

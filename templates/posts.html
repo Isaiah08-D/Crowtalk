@@ -2,9 +2,9 @@
 
 
 {% block content %}
-{% for title, post in posts.items() %}
+{% for post in posts %}
 
-<a href="/view-post={{ title }}"><h1>{{ title }}</h1></a>
+<a href="/view-post={{ post['title'] }}"><h1>{{ post['title'] }}</h1></a>
 
 <a href="/user={{ post['author'] }}"><i>{{ post['author'] }}</i></a>
 

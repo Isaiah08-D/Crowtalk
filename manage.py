@@ -24,4 +24,6 @@ class INIT:
 	"""
 	userDB = db['userDB']
 	postsDB = db['postsDB']
+	modActivity = db['modActivity']
+	postsDBdict = db['postsDBdict']
 
