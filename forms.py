@@ -16,3 +16,7 @@ class PostForm(FlaskForm):
 class CommentForm(FlaskForm):
 	comment = StringField('Text: ', validators=[Required()])
 	submit = SubmitField('Comment')
+
+class BanForm(FlaskForm):
+	period = StringField('What date will this user be unbanned? ')
+	submit = SubmitField('Ban')

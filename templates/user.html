@@ -3,7 +3,9 @@
 {% block content %}
 
 <h1>{{ username }}</h1>
-
+{% if userinfo['position'] == 'mod' %}
+<input type="button" value="Mod">
+{% endif %}
 <h2>Posts</h2>
 {% for post in userinfo['posts'] %}
 

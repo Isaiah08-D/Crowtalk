@@ -2,6 +2,7 @@ from manage import INIT
 
 userDB = INIT.userDB
 postsDB = INIT.postsDB
+postsDBdict = INIT.postsDBdict
 modActivity = INIT.modActivity
 
 """
@@ -16,4 +17,6 @@ userDB['<username>'] = {'password':'<password>', posts':[postsDb['<title>']], 'c
 modActivity = ['example-mod banned example-user until 8/14/2021', 'example-mod became a mod',]
 
 """
+
+
 

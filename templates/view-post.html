@@ -4,7 +4,14 @@
 
 
 <h1>{{ post['title'] }}</h1> 
-<a href="/comment/p={{ post['title']}}"> 
+{% if login[0] == 'mod' %}
+<form action="/ban/u={{ post['author'] }}">
+    <input type="submit" value="Ban" />
+</form>
+{% endif %}
+<form action="/comment/p={{ post['title']}}">
+    <input type="submit" value="Comment" />
+</form>
 
 <a href="/user={{ post['author'] }}"><i>{{ post['author'] }}</i></a>
 

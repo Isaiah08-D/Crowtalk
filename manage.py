@@ -27,3 +27,8 @@ class INIT:
 	modActivity = db['modActivity']
 	postsDBdict = db['postsDBdict']
 
+def reset():
+	INIT.userDB = {}
+	INIT.postsDB = []
+	INIT.postsDBdict = {}
+	INIT.modActivity = []
