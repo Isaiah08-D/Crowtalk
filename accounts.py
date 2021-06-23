@@ -48,7 +48,7 @@ def create_account():
 		# otherwise, create the account
 		userDB[username] = {'password': password, 'posts':[], 'caws': 0, 'status': 'normal', 'position':'user'}
 		# let the computer know that you're logged in
-		session['login'] = (True, username, userDB[username]['status'])
+		session['login'] = [True, username, userDB[username]['status']]
 		session['message'] = 'Logged in!'
 
 	message = session.get('message')

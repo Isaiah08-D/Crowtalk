@@ -26,6 +26,7 @@ class INIT:
 	postsDB = db['postsDB']
 	modActivity = db['modActivity']
 	postsDBdict = db['postsDBdict']
+	bans = db['bans']
 
 def reset():
 	INIT.userDB = {}

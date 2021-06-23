@@ -8,7 +8,7 @@ app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 non_login_list = ['/', '/posts', '/login']
 pages = ['/', '/posts', '/login', '/logout']
 
-postsDB, userDB, modActivity, postsDBdict = INIT.postsDB, INIT.userDB, INIT.modActivity, INIT.postsDBdict
+postsDB, userDB, modActivity, postsDBdict, bans = INIT.postsDB, INIT.userDB, INIT.modActivity, INIT.postsDBdict, INIT.bans
 
 
 # before any request
@@ -17,9 +17,7 @@ def before_request():
 	if session.get('login') == None or session.get('login') == False:
 		session['login'] = False
 	else:
-		if userDB[session.get('login')[1]]['status'] == 'banned':
-			print('yo')
-
+		if session.get('login')[1] in bans or request.path == '/banned':
 			return redirect('/banned')
 	if request.path in pages or '/view-post=' in request.path or 'make-me-mod/k=' in request.path or 'comment/p=' in request.path:
 		if session.get('login') == False and request.path not in non_login_list:

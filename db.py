@@ -16,7 +16,11 @@ userDB['<username>'] = {'password':'<password>', posts':[postsDb['<title>']], 'c
 
 modActivity = ['example-mod banned example-user until 8/14/2021', 'example-mod became a mod',]
 
+bans = ['example-banned-user', 'example-banned-user2']
+
+clear:
+db['postsDB'] = []
+db['userDB'] = {}
+db['postsDBdict']
+db['modActivity'] = []
 """
-
-
-

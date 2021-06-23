@@ -3,7 +3,7 @@ from flask import session, redirect, render_template
 from manage import INIT
 import os
 
-postsDB, userDB, modActivity, postsDBdict = INIT.postsDB, INIT.userDB, INIT.modActivity, INIT.postsDBdict
+postsDB, userDB, modActivity, postsDBdict, bans = INIT.postsDB, INIT.userDB, INIT.modActivity, INIT.postsDBdict, INIT.bans
 app = INIT.app
 
 @app.route('/make-me-mod/k=<modkey>')
@@ -29,12 +29,13 @@ def ban(user):
 	if form.validate_on_submit():
 		period = form.period.data
 
-		userDB[user]['status'] = 'banned'
+		bans.append(user)
 		modActivity.insert(0, session.get('login')[1] + ' banned ' + user + ' until ' + period + '.')
+		print('hi')
 	message = session.get('message')
 	session['message'] = None
 
-	return render_template('banned.html', login=session.get('login'), message=message, form=form)
+	return render_template('ban.html', login=session.get('login'), message=message, form=form)
 
 @app.route('/banned')
 def banned():

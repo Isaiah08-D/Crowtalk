@@ -1,6 +1,7 @@
 from forms import PostForm, CommentForm
 from flask import session, redirect, render_template
 from manage import INIT
+import random
 
 postsDB, userDB, modActivity, postsDBdict = INIT.postsDB, INIT.userDB, INIT.modActivity, INIT.postsDBdict
 app = INIT.app
@@ -14,13 +15,14 @@ def post():
 		# get form data
 		title = form.title.data
 		body = form.body.data
+		post_id = str(random.randrange(1000000000, 9999999999))
 		# add the post to the database
-		postsDB.insert(0, {'title': title, 'author': session.get('login')[1], 'content': body, 'comments': []})
-		userDB[session.get('login')[1]]['posts'].append({'title': title, 'author': session.get('login')[1], 'content': body, 'comments': []})
-		postsDBdict[title] = {'title': title, 'author': session.get('login')[1], 'content': body, 'comments': []}
+		postsDB.insert(0, {'title': title, 'author': session.get('login')[1], 'content': body, 'comments': [], 'id':post_id})
+		userDB[session.get('login')[1]]['posts'].append({'title': title, 'author': session.get('login')[1], 'content': body, 'comments': [], 'id': post_id})
+		postsDBdict[title + '-' + post_id] = {'title': title, 'author': session.get('login')[1], 'content': body, 'comments': [], 'id': post_id}
 		
 		session['message'] = 'You posted ' + title
-		return redirect('/view-post='+title)
+		return redirect('/view-post='+title+'-'+post_id)
 
 
 	message = session.get('message')
